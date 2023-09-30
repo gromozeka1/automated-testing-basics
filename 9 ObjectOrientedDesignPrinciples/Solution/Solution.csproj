@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="D:\EPAM-AT-Basic\ObjectOrientedDesignPrinciples\Solution\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="D:\EPAM-AT-Basic\ObjectOrientedDesignPrinciples\Solution\.editorconfig" />
+  </ItemGroup>
+
+</Project>
