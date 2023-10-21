@@ -1,4 +1,6 @@
-﻿class Program
+﻿namespace ConsoleProgram;
+
+public class Program
 {
     static void Main()
     {
@@ -23,7 +25,7 @@
     /// </summary>
     /// <param name="source">Source string</param>
     /// <returns>Number of unique chars</returns>
-    private static int GetTotalNumberUniqueChars(string source)
+    public static int GetTotalNumberUniqueChars(string source)
     {
         HashSet<char> uniqueChars = new();
         foreach (var @char in source)
@@ -39,8 +41,16 @@
     /// </summary>
     /// <param name="source">Source string</param>
     /// <returns>Maximum number of unique consecutive chars</returns>
-    private static int GetMaxNumberUniqueCharsSeq(string source)
+    /// <exception cref="ArgumentNullException">Source is null</exception>
+    public static int GetMaxNumberUniqueCharsSeq(string? source)
     {
+        ArgumentNullException.ThrowIfNull(source);
+
+        if (string.IsNullOrWhiteSpace(source))
+        {
+            return 0;
+        }
+
         int max = 1;
         int totalMax = 0;
 
@@ -65,16 +75,23 @@
     /// </summary>
     /// <param name="source">Source string</param>
     /// <returns>Maximum number of consecutive identical letters of the Latin alphabet</returns>
-    private static int GetMaxNumberConsecutiveIdenticalLatinLetters(string source)
+    public static int GetMaxNumberConsecutiveIdenticalLatinLetters(string? source)
     {
+        ArgumentNullException.ThrowIfNull(source);
+
+        if (string.IsNullOrWhiteSpace(source))
+        {
+            return 0;
+        }
+
         int totalMax = 0;
         int counter = 0;
-        for (int i = 0; i < source.Length - 1; i++)
+        for (int i = 0; i < source.Length; i++)
         {
-            if (IsLatinLetter(source[i]) && source[i] == source[i + 1])
+            if (IsLatinLetter(source[i]))
             {
-                counter++;
-                while (source[i] == source[i + 1])
+                counter = 1;
+                while (i < source.Length - 1 && source[i] == source[i + 1])
                 {
                     counter++;
                     i++;
@@ -97,8 +114,15 @@
     /// </summary>
     /// <param name="source">Source string</param>
     /// <returns>Naximum number of consecutive identical digits</returns>
-    private static int GetMaxNumberConsecutiveIdenticalDigits(string source)
+    public static int GetMaxNumberConsecutiveIdenticalDigits(string? source)
     {
+        ArgumentNullException.ThrowIfNull(source);
+
+        if (string.IsNullOrWhiteSpace(source))
+        {
+            return 0;
+        }
+
         int totalMax = 0;
         int counter = 0;
         for (int i = 0; i < source.Length - 1; i++)
